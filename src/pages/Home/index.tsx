@@ -35,6 +35,8 @@ interface ICycle {
   task: string
   minutesAmount: number
   startDate: Date
+  interruptedDate?: Date
+  finishedDate?: Date
 }
 
 export function Home() {
@@ -53,21 +55,42 @@ export function Home() {
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
   const ONE_SECOND = 1000
 
+  const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
+
   useEffect(() => {
     let interval: number
 
     if (activeCycle) {
       interval = setInterval(() => {
-        setAmountSecondsPassed(
-          differenceInSeconds(new Date(), activeCycle.startDate),
+        const secondsDifference = differenceInSeconds(
+          new Date(),
+          activeCycle.startDate,
         )
+
+        if (secondsDifference >= totalSeconds) {
+          setCycles((state) =>
+            state.map((cycle) => {
+              if (cycle.id === activeCycleId) {
+                return { ...cycle, finishedDate: new Date() }
+              } else {
+                return cycle
+              }
+            }),
+          )
+
+          setAmountSecondsPassed(totalSeconds)
+
+          clearInterval(interval)
+        } else {
+          setAmountSecondsPassed(secondsDifference)
+        }
       }, ONE_SECOND)
     }
 
     return () => {
       clearInterval(interval)
     }
-  }, [activeCycle])
+  }, [activeCycle, totalSeconds])
 
   function handleCreateNewCycle(data: INewCycleFormData) {
     const id = uuidv4()
@@ -86,7 +109,20 @@ export function Home() {
     reset()
   }
 
-  const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
+  function handleInterruptCycle() {
+    setCycles((state) =>
+      state.map((cycle) => {
+        if (cycle.id === activeCycleId) {
+          return { ...cycle, interruptedDate: new Date() }
+        } else {
+          return cycle
+        }
+      }),
+    )
+
+    setActiveCycleId(null)
+  }
+
   const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0
 
   const minutesAmount = Math.floor(currentSeconds / 60)
@@ -137,7 +173,7 @@ export function Home() {
         </CountdownContainer>
 
         {activeCycle ? (
-          <StopCountdownButton type="button">
+          <StopCountdownButton onclick={handleInterruptCycle} type="button">
             <HandPalm size={24} />
             Interromper
           </StopCountdownButton>
