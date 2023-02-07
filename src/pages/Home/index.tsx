@@ -90,7 +90,7 @@ export function Home() {
     return () => {
       clearInterval(interval)
     }
-  }, [activeCycle, totalSeconds])
+  }, [activeCycle, totalSeconds, activeCycleId])
 
   function handleCreateNewCycle(data: INewCycleFormData) {
     const id = uuidv4()
