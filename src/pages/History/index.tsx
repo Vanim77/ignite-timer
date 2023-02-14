@@ -5,6 +5,8 @@ import { HistoryContainer, HistoryList, Status } from './styles'
 export function History() {
   const { cycles } = useContext(CyclesContext)
 
+  console.log(cycles)
+
   return (
     <HistoryContainer>
       <h1>Meu Histórico</h1>
