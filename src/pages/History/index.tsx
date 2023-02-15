@@ -34,6 +34,7 @@ export function History() {
                     })}
                   </td>
                   <td>
+                    {/* fix later -> bug when concludes a cycle */}
                     {cycle.finishedDate && (
                       <Status statusColor="green">Concluído</Status>
                     )}
