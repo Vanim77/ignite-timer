@@ -37,8 +37,6 @@ interface ICyclesState {
 
 export const CyclesContext = createContext({} as ICyclesContextData)
 
-console.log(CyclesContext)
-
 export function CyclesContextProvider({
   children,
 }: ICyclesContextProviderProps) {
