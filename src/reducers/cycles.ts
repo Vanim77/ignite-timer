@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+// Disable because the integration with typescript have a bug with "no unused vars"
 export interface ICycle {
   id: string
   task: string
