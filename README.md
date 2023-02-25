@@ -22,3 +22,14 @@ Este projeto é um Timer usando o método de gerenciamento de tempo "pomodoro" �
   * CSS
   * ESLint
   * Vite
+---
+
+### Como instalar as dependências
+
+1. Clone o repositório
+  * `git clone git@github.com:Vanim77/ignite-timer.git`.
+  * Entre na pasta do repositório que você acabou de clonar:
+    * `cd ignite-timer`
+
+1. Instale as dependências
+   * `npm install`
