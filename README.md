@@ -33,3 +33,13 @@ Este projeto é um Timer usando o método de gerenciamento de tempo "pomodoro" �
 
 1. Instale as dependências
    * `npm install`
+
+---
+
+### Iniciando a aplicação no terminal :desktop_computer: :computer_mouse:
+
+Na pasta da aplicação, execute o comando `npm start`.
+
+Abra o navegador na URL `localhost:3000`
+
+Navegue dentro da aplicação! 🌟
