@@ -11,3 +11,14 @@ Este projeto é um Timer usando o método de gerenciamento de tempo "pomodoro" �
 # Link :paperclip:
 
   * [ignite-timer.vercel.app](https://ignite-timer-nine-sooty.vercel.app)
+
+---
+
+## Tecnologias usadas :computer:
+
+  * React.js
+  * Typescript
+  * HTML
+  * CSS
+  * ESLint
+  * Vite
