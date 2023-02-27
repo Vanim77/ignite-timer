@@ -17,6 +17,7 @@ Este projeto é um Timer usando o método de gerenciamento de tempo "pomodoro" �
 ## Tecnologias usadas :computer:
 
   * React.js
+  * Styled Components
   * Typescript
   * HTML
   * CSS
